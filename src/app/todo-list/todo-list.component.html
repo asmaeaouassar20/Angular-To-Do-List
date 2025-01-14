@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <h1 class="mb-5">My To-Do List</h1>
+
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Add a New Task" [(ngModel)]="newTask"
+            (keyup.enter)="addNewTask()">
+        <button class="btn btn-primary" (click)="addNewTask()">Add New Task</button>
+    </div>
+
+
+    <ul class="list-group mt-3">
+        <li *ngFor="let task of tasks; let i=index "
+            class="list-group-item d-flex justify-content-between align-items-center">
+
+            <span [class.text-decoration-line-through]="task.completed"> {{task.name}}</span>
+
+            <div>
+
+                <button class="btn btn-sm btn-success me-2" (click)="toggleTakCompletion(task)">{{task.completed ?
+                    'cancel' : 'terminate'}}</button>
+                <button class="btn btn-sm btn-danger" (click)="deleteTask(i)">delete</button>
+            </div>
+        </li>
+    </ul>
+</div>
